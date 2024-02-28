@@ -1,0 +1,103 @@
+1]
+
+import java.util.Scanner;
+public class LuckySumWithInput {
+    public static int luckySum(int a, int b, int c) {
+        if (a == 13) {
+            return 0;
+        } else if (b == 13) {
+            return a;
+        } else if (c == 13) {
+            return a + b;
+        } else {
+            return a + b + c;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value for a: ");
+        int a = scanner.nextInt();
+        System.out.print("Enter the value for b: ");
+        int b = scanner.nextInt();
+        System.out.print("Enter the value for c: ");
+        int c = scanner.nextInt();
+        int result = luckySum(a, b, c);
+        System.out.println("The lucky sum is: " + result);
+        scanner.close();
+    }
+}
+
+
+
+2]
+
+import java.util.Scanner;
+public class TeenSumWithInput {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value for a: ");
+        int a = scanner.nextInt();
+        System.out.print("Enter the value for b: ");
+        int b = scanner.nextInt();
+        System.out.print("Enter the value for c: ");
+        int c = scanner.nextInt();
+        int result = noTeenSum(a, b, c);
+        System.out.println("The sum is: " + result);
+        scanner.close();
+    }
+
+    public static int noTeenSum(int a, int b, int c) {
+        int fixedA = fixTeen(a);
+        int fixedB = fixTeen(b);
+        int fixedC = fixTeen(c);
+        return fixedA + fixedB + fixedC;
+    }
+    public static int fixTeen(int n) {
+        if ((n >= 13 && n <= 19) && !(n == 15 || n == 16)) {
+            return 0;
+        } else {
+            return n; 
+        }
+    }
+}
+
+
+
+3]
+
+
+import java.util.Scanner;
+public class LotteryTicket {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value for a: ");
+        int a = scanner.nextInt();
+        System.out.print("Enter the value for b: ");
+        int b = scanner.nextInt();
+        System.out.print("Enter the value for c: ");
+        int c = scanner.nextInt();
+        int result = greenTicket(a, b, c);
+        System.out.println("The result is: " + result);
+        scanner.close();
+    }
+
+    public static int greenTicket(int a, int b, int c) {
+        if (a == b && b == c) {
+            return 20;
+        }
+        else if (a == b || a == c || b == c) {
+            return 10;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,193 @@
+import java.util.Scanner;
+
+public class SeriesGenerator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of a: ");
+        int a = scanner.nextInt();
+
+        System.out.print("Enter the value of b: ");
+        int b = scanner.nextInt();
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        if (isValidInput(a, b, n)) {
+            int[] series = generateSeries(a, b, n);
+            System.out.print("Series: ");
+            for (int num : series) {
+                System.out.print(num + " ");
+            }
+        } else {
+            System.out.println("Constraints violated. Please enter values within the specified range.");
+        }
+    }
+
+    public static boolean isValidInput(int a, int b, int n) {
+        return (0 <= a && a <= 50) && (0 <= b && b <= 50) && (0 <= n && n <= 15);
+    }
+
+    public static int[] generateSeries(int a, int b, int n) {
+        int[] series = new int[n + 1];
+        int currentSum = a;
+        int powerOf2 = 1;
+
+        for (int i = 0; i <= n; i++) {
+            series[i] = currentSum;
+            currentSum += powerOf2 * b;
+            powerOf2 *= 2;
+        }
+
+        return series;
+    }
+}
+
+2]
+public class ReverseInteger {
+    public static void main(String[] args) {
+        System.out.println(ReverseOfx(123));   // Output: 321
+        System.out.println(ReverseOfx(-123));  // Output: -321
+        System.out.println(ReverseOfx(406));   // Output: 604
+    }
+
+    public static int ReverseOfx(int x) {
+        int reversed = 0;
+        boolean isNegative = false;
+        if (x < 0) {
+            isNegative = true;
+            x = -x; // Make it positive to reverse
+        }
+
+        while (x != 0) {
+            int digit = x % 10;
+            reversed = reversed * 10 + digit;
+            x /= 10;
+        }
+
+        if (isNegative) {
+            reversed = -reversed;
+        }
+
+        return reversed;
+    }
+}
+
+3]
+public class BinaryNumber {
+    public static void main(String[] args) {
+        System.out.println(BinaryNum(23));   
+        System.out.println(BinaryNum(124));
+        System.out.println(BinaryNum(234));  
+    }
+
+    public static String BinaryNum(int x) {
+        StringBuilder binary = new StringBuilder();
+ 
+        if (x == 0) {
+            return "0";
+        }
+
+        while (x > 0) {
+            int remainder = x % 2;  
+            binary.insert(0, remainder); 
+            x = x / 2;  
+        }
+
+        return binary.toString();
+    }
+}
+
+4]
+import java.util.Scanner;
+
+public class BusTicket {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter from stage number: ");
+        int fromStage = scanner.nextInt();
+        System.out.print("Enter to stage number: ");
+        int toStage = scanner.nextInt();
+
+        System.out.print("Enter the number of adult passengers: ");
+        int adultPassengers = scanner.nextInt();
+        System.out.print("Enter the number of children passengers: ");
+        int childrenPassengers = scanner.nextInt();
+
+        int numberOfStages = Math.abs(toStage - fromStage);
+
+        double adultCost = adultPassengers * 10 * numberOfStages;
+
+        double childCost = childrenPassengers * 5 * numberOfStages;
+
+        double totalTicketCost = adultCost + childCost;
+
+        double discount = 0;
+        if (adultPassengers >= 5) {
+            discount = 0.20 * totalTicketCost;
+        } else if (adultPassengers == 4) {
+            discount = 0.15 * totalTicketCost;
+        } else if (adultPassengers == 3) {
+            discount = 0.10 * totalTicketCost;
+        } else if (adultPassengers == 2) {
+            discount = 0.05 * totalTicketCost;
+        }
+        double ticketCostAfterDiscount = totalTicketCost - discount;
+        double serviceCharge = 0.05 * ticketCostAfterDiscount;
+        double totalTicketCostWithServiceCharge = ticketCostAfterDiscount + serviceCharge;
+        System.out.println("Total ticket cost: Rs." + totalTicketCostWithServiceCharge);
+    }
+}
+
+5]
+public class NearestPrime {
+    public static void main(String[] args) {
+        System.out.println(nearestPrime(11));  // Output: 11
+        System.out.println(nearestPrime(25));  // Output: 23
+        System.out.println(nearestPrime(21));  // Output: 19 23
+        System.out.println(nearestPrime(6));   // Output: 5 7
+    }
+
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        if (n <= 3) {
+            return true;
+        }
+        if (n % 2 == 0 || n % 3 == 0) {
+            return false;
+        }
+        int i = 5;
+        while (i * i <= n) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+            i += 6;
+        }
+        return true;
+    }
+
+    public static int nearestPrime(int x) {
+        if (isPrime(x)) {
+            return x;
+        }
+
+        int lowerPrime = x - 1;
+        int upperPrime = x + 1;
+
+        while (true) {
+            if (isPrime(lowerPrime)) {
+                return lowerPrime;
+            } else if (isPrime(upperPrime)) {
+                return upperPrime;
+            } else {
+                lowerPrime--;
+                upperPrime++;
+            }
+        }
+    }
+}
+
+
